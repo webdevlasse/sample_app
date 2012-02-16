@@ -31,5 +31,6 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 group :test do
   gem 'rspec-rails', '2.6.1'
   gem 'webrat', '0.7.1'
+  gem 'factory_girl_rails', '1.0'
 end
 
