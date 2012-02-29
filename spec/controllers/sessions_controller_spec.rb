@@ -37,12 +37,12 @@ render_views
       
     end
     
-    describe "success" do
-      before (:each) do
-        @user = Factory(:user)
-        @attr = {:email  => @user.email, :password  => @user.password}
-    
-    end
+ describe "success" do
+    before (:each) do
+      @user = Factory(:user)
+      @attr = {:email  => @user.email, :password  => @user.password}
+  
+    end 
 
       
       it "should sign the user in" do
@@ -55,8 +55,16 @@ render_views
         post :create, :session  => @attr 
         response.should redirect_to(user_path(@user)) 
       end  
-    
-end
-end
+    end
+  end
+
+  describe "DELETE 'destroy'"  do
+    it "should sign a user out" do
+      test_sign_in(Factory(:user))
+      delete :destroy
+      controller.should_not be_signed_in
+      response.should redirect_to(root_path)
+    end
+  end
 end
 end
